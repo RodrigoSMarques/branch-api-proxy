@@ -1,0 +1,15 @@
+{
+  "name": "branch-api-proxy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rodrigo S Marques",
+  "license": "ISC",
+  "description": "Dynamic Branch.io API Proxy Service",
+  "dependencies": {
+    "axios": "^1.12.2",
+    "express": "^5.1.0"
+  }
+}
