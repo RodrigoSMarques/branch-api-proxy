@@ -18,4 +18,4 @@ By routing all Branch.io API traffic through your application's own domain, this
 *   **Response Handling:** Captures responses from Branch.io, including status codes and data, and returns them to the originating client.
 
 
-For the `**FlutterBranchSDK**` plugin, configure the Url in the `branch-config.jso`n file under the **apiUrl** key
+For the `FlutterBranchSDK` plugin, configure the Url in the `branch-config.jso`n file under the **apiUrl** key
