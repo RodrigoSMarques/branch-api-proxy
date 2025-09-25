@@ -44,10 +44,11 @@ app.all(/^(\/.+|(?!\/).*)$/, async (req, res) => { // Using app.all to handle an
     // req.params[0] will contain the entire path after the root (e.g., 'v1/url' for /v1/url)
     const branchApiPath = req.params[0].substring(1);
 
+    let targetUrl = '';
     if (deviceOs.toUpperCase() == `IOS`) {
-        const targetUrl = `${branchApiBaseUrliOS}${branchApiPath}`;
+        targetUrl = `${branchApiBaseUrliOS}${branchApiPath}`;
     } else {
-        const targetUrl = `${branchApiBaseUrlAndroid}${branchApiPath}`;
+        targetUrl = `${branchApiBaseUrlAndroid}${branchApiPath}`;
     }
     
     console.log(`Request received at path: /${branchApiPath}`);
