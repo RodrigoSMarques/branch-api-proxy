@@ -4,7 +4,7 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 const port = 3000; // Or any preferred port
-const branchApiBaseUrl = 'https://api2.branch.io/';
+const branchApiBaseUrl = 'https://api3.branch.io/';
 
 // Load allowed Branch.io keys from environment variables
 // It expects a comma-separated string, e.g., "key1,key2,key3"
