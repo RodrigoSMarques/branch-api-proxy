@@ -4,7 +4,9 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 const port = 3000; // Or any preferred port
-const branchApiBaseUrl = 'https://api3.branch.io/';
+
+const branchApiBaseUrliOS = 'https://api3.branch.io/';
+const branchApiBaseUrlAndroid = 'https://api2.branch.io/';
 
 // Load allowed Branch.io keys from environment variables
 // It expects a comma-separated string, e.g., "key1,key2,key3"
@@ -30,6 +32,7 @@ app.all(/^(\/.+|(?!\/).*)$/, async (req, res) => { // Using app.all to handle an
 
     // --- START Branch Key Validation ---
     const incomingBranchKey = req.body.branch_key;
+    const deviceOs = req.body.os;
 
     if (!ALLOWED_BRANCH_KEYS.includes(incomingBranchKey)) {
         console.warn(`[Proxy-Auth] Request to ${req.path} denied: Invalid 'branch_key' "${incomingBranchKey}".`);
@@ -40,8 +43,13 @@ app.all(/^(\/.+|(?!\/).*)$/, async (req, res) => { // Using app.all to handle an
 
     // req.params[0] will contain the entire path after the root (e.g., 'v1/url' for /v1/url)
     const branchApiPath = req.params[0].substring(1);
-    const targetUrl = `${branchApiBaseUrl}${branchApiPath}`;
 
+    if (deviceOs.toUpperCase() == `IOS`) {
+        const targetUrl = `${branchApiBaseUrliOS}${branchApiPath}`;
+    } else {
+        const targetUrl = `${branchApiBaseUrlAndroid}${branchApiPath}`;
+    }
+    
     console.log(`Request received at path: /${branchApiPath}`);
     console.log('Redirecting to:', targetUrl);
     console.log('Request body:', req.body);
